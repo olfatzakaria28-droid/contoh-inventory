@@ -4,36 +4,6 @@ const URL_APPS_SCRIPT =
 let tipe = "";
 let barcode = "";
 let nama = "";
-let userName = "";
-
-function mulai(){
-
-userName =
-document
-.getElementById("userName")
-.value
-.trim();
-
-if(!userName){
-
-```
-alert("Masukkan Nama");
-
-return;
-```
-
-}
-
-document
-.getElementById("login")
-.style.display = "none";
-
-document
-.getElementById("menu")
-.style.display = "block";
-
-}
-
 
 function pilih(t){
 
@@ -106,6 +76,17 @@ async function simpan(){
 
 const qty =
 document.getElementById("qty").value;
+const pic =
+document.getElementById("pic").value;
+
+if(!qty){
+  alert("Masukkan Qty");
+  return;
+}
+if(!pic){
+  alert("Masukkan Nama PIC");
+  return;
+}
 
 const res = await fetch(URL_APPS_SCRIPT,{
 method:"POST",
@@ -114,7 +95,7 @@ action:"save",
 barcode:barcode,
 nama:nama,
 qty:qty,
-pic:userName,
+pic:pic,
 tipe:tipe
 })
 });
