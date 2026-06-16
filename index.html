@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 
-<meta charset="UTF-8">
 <meta name="viewport"
 content="width=device-width,initial-scale=1">
-
-<title>Inventory Scanner</title>
 
 <link rel="stylesheet"
 href="style.css">
@@ -22,23 +18,7 @@ href="style.css">
 
 <h2>Inventory Scanner</h2>
 
-<div id="login">
-
-<input
-id="userName"
-type="text"
-placeholder="Masukkan Nama">
-
-<br><br>
-
-<button onclick="alert('Tombol Berfungsi')">
-Lanjut
-</button>
-
-</div>
-
-<div id="menu"
-style="display:none">
+<div id="menu">
 
 <button onclick="pilih('IN')">
 📥 Barang Masuk
@@ -53,8 +33,6 @@ style="display:none">
 <div id="scanner"
 style="display:none">
 
-<h3 id="judulScan"></h3>
-
 <div id="reader"></div>
 
 </div>
@@ -64,20 +42,10 @@ style="display:none">
 
 <h3 id="nama"></h3>
 
-<p id="kategori"></p>
-
-<p id="stok"></p>
-
 <input
 id="qty"
 type="number"
 placeholder="Qty">
-
-<br><br>
-
-<textarea
-id="keterangan"
-placeholder="Keterangan"></textarea>
 
 <br><br>
 
