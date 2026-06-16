@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 
-<html lang="id">
+<html>
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
 
-<title>Inventory Barang</title>
+<title>Inventory Scanner</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="style.css">
 
-<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
 
 </head>
 
 <body>
 
-<div class="container">
-
 <div class="card">
 
-<h2>Inventory Barang</h2>
+<h2>Inventory Scanner</h2>
 
-<div id="stepUser">
+<div id="login">
 
 <input
-type="text"
 id="userName"
+type="text"
 placeholder="Masukkan Nama">
 
-<button onclick="showMenu()">
+<br><br>
+
+<button onclick="mulai()">
 Lanjut
 </button>
 
 </div>
 
-<div id="stepMenu" class="hidden">
+<div id="menu"
+style="display:none">
 
-<button
-class="btn-in"
-onclick="startScan('IN')">
-
+<button onclick="pilih('IN')">
 📥 Barang Masuk
-
 </button>
 
-<button
-class="btn-out"
-onclick="startScan('OUT')">
-
+<button onclick="pilih('OUT')">
 📤 Barang Keluar
-
 </button>
 
 </div>
 
-<div id="stepScanner" class="hidden">
+<div id="scanner"
+style="display:none">
 
-<h3>Scan Barcode</h3>
+<h3 id="judulScan"></h3>
 
 <div id="reader"></div>
 
 </div>
 
-<div id="stepForm" class="hidden">
+<div id="form"
+style="display:none">
 
-<h3 id="namaBarang"></h3>
+<h3 id="nama"></h3>
 
-<p id="kategoriBarang"></p>
+<p id="kategori"></p>
 
-<p id="stokBarang"></p>
+<p id="stok"></p>
 
 <input
-type="number"
 id="qty"
-placeholder="Jumlah">
+type="number"
+placeholder="Qty">
+
+<br><br>
 
 <textarea
 id="keterangan"
 placeholder="Keterangan"></textarea>
 
-<button onclick="saveData()">
+<br><br>
+
+<button onclick="simpan()">
 💾 Simpan
 </button>
-
-</div>
 
 </div>
 
