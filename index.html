@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Inventory Barang</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Inventory Barang</h2>
+
+<div id="stepUser">
+
+<input
+type="text"
+id="userName"
+placeholder="Masukkan Nama">
+
+<button onclick="showMenu()">
+Lanjut
+</button>
+
+</div>
+
+<div id="stepMenu" class="hidden">
+
+<button
+class="btn-in"
+onclick="startScan('IN')">
+
+📥 Barang Masuk
+
+</button>
+
+<button
+class="btn-out"
+onclick="startScan('OUT')">
+
+📤 Barang Keluar
+
+</button>
+
+</div>
+
+<div id="stepScanner" class="hidden">
+
+<h3>Scan Barcode</h3>
+
+<div id="reader"></div>
+
+</div>
+
+<div id="stepForm" class="hidden">
+
+<h3 id="namaBarang"></h3>
+
+<p id="kategoriBarang"></p>
+
+<p id="stokBarang"></p>
+
+<input
+type="number"
+id="qty"
+placeholder="Jumlah">
+
+<textarea
+id="keterangan"
+placeholder="Keterangan"></textarea>
+
+<button onclick="saveData()">
+💾 Simpan
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
