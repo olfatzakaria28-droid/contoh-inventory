@@ -1,226 +1,100 @@
-const API_URL =
-"https://script.google.com/macros/s/AKfycbzs8i5LhxLTld9k5OlD3kGSwFrSckUwdV8sPNzj3CrWMMnfeKnRfQFzuDr5enFoh1ShaA/exec";
+const URL_APPS_SCRIPT =
+"https://script.google.com/macros/s/XXXX/exec";
 
 let tipe = "";
-let kode = "";
-let item = {};
-let userName = "";
-let scanner = null;
+let barcode = "";
+let nama = "";
 
-function mulai(){
-
-userName =
-document
-.getElementById("userName")
-.value
-.trim();
-
-if(!userName){
-
-```
-alert("Masukkan Nama");
-
-return;
-```
-
-}
-
-document
-.getElementById("login")
-.style.display = "none";
-
-document
-.getElementById("menu")
-.style.display = "block";
-
-}
-
-async function api(data){
-
-const res =
-await fetch(
-API_URL,
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify(data)
-}
-);
-
-return await res.json();
-
-}
-
-async function pilih(t){
+function pilih(t){
 
 tipe = t;
 
-document
-.getElementById("menu")
-.style.display = "none";
+document.getElementById("menu").style.display="none";
+document.getElementById("scanner").style.display="block";
 
-document
-.getElementById("scanner")
-.style.display = "block";
+startScanner();
 
-document
-.getElementById("judulScan")
-.innerHTML =
-t === "IN"
-? "Scan Barang Masuk"
-: "Scan Barang Keluar";
+}
 
-scanner =
+function startScanner(){
+
+const html5QrCode =
 new Html5Qrcode("reader");
 
-const cameras =
-await Html5Qrcode.getCameras();
+html5QrCode.start(
+{ facingMode: "environment" },
+{
+fps:10,
+qrbox:250
+},
+async(code)=>{
 
-if(cameras.length === 0){
+barcode = code;
 
-```
-alert("Kamera tidak ditemukan");
+await html5QrCode.stop();
+
+cariBarang();
+
+}
+);
+
+}
+
+async function cariBarang(){
+
+const res = await fetch(URL_APPS_SCRIPT,{
+method:"POST",
+body:JSON.stringify({
+action:"getItem",
+barcode:barcode
+})
+});
+
+const data = await res.json();
+
+if(!data.found){
+
+alert("Barang tidak ditemukan");
+
+location.reload();
 
 return;
-```
 
 }
 
-let cameraId =
-cameras[cameras.length - 1].id;
+nama = data.nama;
 
-await scanner.start(
+document.getElementById("scanner").style.display="none";
+document.getElementById("form").style.display="block";
 
-```
-cameraId,
-
-{
-  fps:10,
-  qrbox:250
-},
-
-async function(decodedText){
-
-  kode = decodedText;
-
-  await scanner.stop();
-
-  item =
-  await api({
-
-    action:"getItem",
-
-    kode:kode
-
-  });
-
-  if(!item.found){
-
-    alert("Barang tidak ditemukan");
-
-    location.reload();
-
-    return;
-
-  }
-
-  document
-  .getElementById("scanner")
-  .style.display = "none";
-
-  document
-  .getElementById("form")
-  .style.display = "block";
-
-  document
-  .getElementById("nama")
-  .innerHTML =
-  item.nama;
-
-  document
-  .getElementById("kategori")
-  .innerHTML =
-  "Kategori : " +
-  item.kategori;
-
-  document
-  .getElementById("stok")
-  .innerHTML =
-  "Stok Saat Ini : " +
-  item.stok;
-
-}
-```
-
-);
+document.getElementById("nama").innerHTML =
+data.nama;
 
 }
 
 async function simpan(){
 
 const qty =
-document
-.getElementById("qty")
-.value;
+document.getElementById("qty").value;
 
-const keterangan =
-document
-.getElementById("keterangan")
-.value;
-
-if(!qty){
-
-```
-alert("Masukkan Qty");
-
-return;
-```
-
-}
-
-const result =
-await api({
-
-```
+const res = await fetch(URL_APPS_SCRIPT,{
+method:"POST",
+body:JSON.stringify({
 action:"save",
-
-kode:kode,
-
-nama:item.nama,
-
-kategori:item.kategori,
-
+barcode:barcode,
+nama:nama,
 qty:qty,
-
-pic:userName,
-
-tipe:tipe,
-
-keterangan:keterangan
-```
-
+tipe:tipe
+})
 });
 
-if(result.success){
+const data = await res.json();
 
-```
 alert(
-  "Berhasil disimpan\n" +
-  "Stok sekarang : " +
-  result.stokBaru
+"Berhasil disimpan\nStok sekarang: "
++ data.stok
 );
 
 location.reload();
-```
-
-}else{
-
-```
-alert("Gagal menyimpan");
-```
-
-}
 
 }
