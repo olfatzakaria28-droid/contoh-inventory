@@ -9,23 +9,23 @@ font-family:'Poppins',sans-serif;
 
 body{
 
-min-height:100vh;
-
 background:
-radial-gradient(circle at top left,#00e5ff22,transparent 30%),
-radial-gradient(circle at bottom right,#00ff9522,transparent 30%),
+radial-gradient(circle at top left,#00e5ff22,transparent 25%),
+radial-gradient(circle at bottom right,#00ff9522,transparent 25%),
 linear-gradient(
 135deg,
-#0f172a,
-#111827,
-#1e293b
+#081120,
+#0b1730,
+#111827
 );
+
+min-height:100vh;
+
+padding:20px;
 
 display:flex;
 justify-content:center;
-align-items:center;
-
-padding:20px;
+align-items:flex-start;
 
 color:white;
 
@@ -36,20 +36,22 @@ color:white;
 width:100%;
 max-width:550px;
 
-padding:25px;
+margin-top:40px;
 
-border-radius:25px;
+padding:30px;
+
+border-radius:28px;
 
 background:
-rgba(255,255,255,.06);
+rgba(255,255,255,.05);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
 border:
 1px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 0 40px rgba(0,229,255,.12);
+0 0 35px rgba(0,229,255,.15);
 
 }
 
@@ -57,32 +59,42 @@ h2{
 
 text-align:center;
 
-font-size:30px;
+font-size:34px;
 
-margin-bottom:25px;
+font-weight:700;
+
+margin-bottom:30px;
 
 color:#00e5ff;
 
-letter-spacing:1px;
-
 text-shadow:
-0 0 15px rgba(0,229,255,.4);
+0 0 20px rgba(0,229,255,.5);
 
 }
 
-button{
+/* MENU */
 
-width:100%;
+#menu{
 
-padding:15px;
+display:flex;
 
-margin-top:12px;
+gap:15px;
+
+margin-top:15px;
+
+}
+
+#menu button{
+
+flex:1;
+
+height:100px;
 
 border:none;
 
-border-radius:15px;
+border-radius:18px;
 
-font-size:16px;
+font-size:18px;
 
 font-weight:600;
 
@@ -90,14 +102,13 @@ cursor:pointer;
 
 transition:.3s;
 
+color:white;
+
 }
 
-button:hover{
+#menu button:hover{
 
-transform:translateY(-2px);
-
-box-shadow:
-0 10px 20px rgba(0,0,0,.25);
+transform:translateY(-3px);
 
 }
 
@@ -105,12 +116,13 @@ box-shadow:
 
 background:
 linear-gradient(
-90deg,
+135deg,
 #00c853,
 #64dd17
 );
 
-color:white;
+box-shadow:
+0 0 20px rgba(0,255,100,.3);
 
 }
 
@@ -118,25 +130,90 @@ color:white;
 
 background:
 linear-gradient(
-90deg,
+135deg,
 #ff1744,
 #ff5252
 );
 
-color:white;
+box-shadow:
+0 0 20px rgba(255,50,50,.3);
 
 }
 
-#form button{
+/* SCANNER */
+
+#reader{
+
+width:100%;
+
+overflow:hidden;
+
+border-radius:20px;
+
+border:
+2px solid #00e5ff;
+
+box-shadow:
+0 0 25px rgba(0,229,255,.3);
+
+margin-top:15px;
+
+}
+
+/* FORM */
+
+#nama{
+
+font-size:26px;
+
+font-weight:700;
+
+color:#00e5ff;
+
+margin-top:20px;
+
+margin-bottom:15px;
+
+text-align:center;
+
+text-shadow:
+0 0 15px rgba(0,229,255,.4);
+
+}
+
+#barcode,
+#kategori,
+#merk,
+#stok,
+#satuan{
+
+padding:12px 15px;
+
+margin-top:10px;
+
+border-radius:12px;
 
 background:
-linear-gradient(
-90deg,
-#2196f3,
-#00e5ff
-);
+rgba(255,255,255,.05);
 
-color:white;
+border:
+1px solid rgba(255,255,255,.08);
+
+font-size:14px;
+
+}
+
+#stok{
+
+background:
+rgba(0,255,149,.08);
+
+border:
+1px solid rgba(0,255,149,.2);
+
+color:#00ff95;
+
+font-weight:bold;
 
 }
 
@@ -146,7 +223,7 @@ width:100%;
 
 padding:14px;
 
-margin-top:12px;
+margin-top:15px;
 
 border-radius:12px;
 
@@ -166,92 +243,64 @@ outline:none;
 
 input::placeholder{
 
-color:#bdbdbd;
+color:#c0c0c0;
 
 }
 
-#reader{
+#form button{
 
-margin-top:15px;
+width:100%;
 
-overflow:hidden;
+margin-top:20px;
 
-border-radius:18px;
+padding:15px;
 
-border:
-2px solid #00e5ff;
+border:none;
+
+border-radius:15px;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#2196f3,
+#00e5ff
+);
 
 box-shadow:
-0 0 25px rgba(0,229,255,.25);
+0 0 20px rgba(0,229,255,.25);
 
 }
 
-#nama{
+/* RESPONSIVE */
 
-margin-top:15px;
+@media(max-width:600px){
 
-font-size:24px;
+#menu{
 
-font-weight:700;
-
-color:#00e5ff;
-
-text-align:center;
+gap:10px;
 
 }
 
-#barcode,
-#kategori,
-#merk,
-#stok,
-#satuan{
+#menu button{
 
-margin-top:10px;
+font-size:15px;
 
-padding:12px 15px;
-
-border-radius:12px;
-
-background:
-rgba(255,255,255,.05);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-font-size:14px;
+height:90px;
 
 }
 
-#stok{
+h2{
 
-font-weight:bold;
+font-size:28px;
 
-color:#00ff95;
-
-background:
-rgba(0,255,149,.08);
-
-border:
-1px solid rgba(0,255,149,.2);
-
-}
-
-#form{
-
-animation:fadeIn .4s ease;
-
-}
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(15px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
 }
 
 }
