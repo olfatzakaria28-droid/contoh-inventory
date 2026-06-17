@@ -1,5 +1,5 @@
 const URL_APPS_SCRIPT =
-"https://script.google.com/macros/s/AKfycbwolklEec6nfSsyNmVkSIsj4UeGSlaM84NQ5gmZrTbCOSTtcI1JNwMtBZxMbkP2SdG-ng/exec";
+"https://script.google.com/macros/s/AKfycbyC63rExrAPTjt4SsJ1AE2tiZGe745LEVSGL9hI4gC-rOD_fC7hp8NnFmXQo6ROPCC9NA/exec";
 
 let tipe = "";
 let barcode = "";
@@ -76,17 +76,6 @@ async function simpan(){
 
 const qty =
 document.getElementById("qty").value;
-const pic =
-document.getElementById("pic").value;
-
-if(!qty){
-  alert("Masukkan Qty");
-  return;
-}
-if(!pic){
-  alert("Masukkan Nama PIC");
-  return;
-}
 
 const res = await fetch(URL_APPS_SCRIPT,{
 method:"POST",
@@ -95,7 +84,6 @@ action:"save",
 barcode:barcode,
 nama:nama,
 qty:qty,
-pic:pic,
 tipe:tipe
 })
 });
