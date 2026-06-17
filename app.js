@@ -5,6 +5,20 @@ let tipe = "";
 let barcode = "";
 let nama = "";
 
+function showLoading(){
+
+document.getElementById("loading").style.display =
+"flex";
+
+}
+
+function hideLoading(){
+
+document.getElementById("loading").style.display =
+"none";
+
+}
+
 function pilih(t){
 
 tipe = t;
@@ -42,6 +56,8 @@ cariBarang();
 
 async function cariBarang(){
 
+showLoading();
+
 const res = await fetch(URL_APPS_SCRIPT,{
 method:"POST",
 body:JSON.stringify({
@@ -51,6 +67,8 @@ barcode:barcode
 });
 
 const data = await res.json();
+
+hideLoading();
 
 if(!data.found){
 
@@ -74,6 +92,8 @@ data.nama;
 
 async function simpan(){
 
+showLoading();
+
 const qty =
 document.getElementById("qty").value;
 
@@ -89,6 +109,8 @@ tipe:tipe
 });
 
 const data = await res.json();
+
+hideLoading();
 
 alert(
 "Berhasil disimpan\nStok sekarang: "
