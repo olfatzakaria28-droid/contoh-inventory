@@ -1,14 +1,9 @@
 const URL_APPS_SCRIPT =
-"https://script.google.com/macros/s/AKfycbyLNXsch_nOyHl4iF9vyOMFDm2z5VZSQv5segdWTqTADH6_eKrJ9l99vFMaAdtIxo-KmA/exec";
+"https://script.google.com/macros/s/AKfycbwYHTq10PSJso_S7D0KqCcQ4EnQyrlBC9p-uoSVlzeUQMQcd85YgqK8yku9pBIsRzf--A/exec";
 
 let tipe = "";
 let barcode = "";
 let nama = "";
-let kategori = "";
-let merk = "";
-let stok = "";
-let satuan = "";
-
 
 function pilih(t){
 
@@ -68,32 +63,12 @@ return;
 }
 
 nama = data.nama;
-kategori = data.kategori;
-merk = data.merk;
-stok = data.stok;
-satuan = data.satuan;
 
 document.getElementById("scanner").style.display="none";
 document.getElementById("form").style.display="block";
 
 document.getElementById("nama").innerHTML =
 data.nama;
-
-document.getElementById("barcode").innerHTML =
-"Barcode : " + data.barcode;
-
-document.getElementById("kategori").innerHTML =
-"Kategori : " + data.kategori;
-
-document.getElementById("merk").innerHTML =
-"Merk : " + data.merk;
-
-document.getElementById("stok").innerHTML =
-"Stok Saat Ini : " + data.stok;
-
-document.getElementById("satuan").innerHTML =
-"Satuan : " + data.satuan;
-
 
 }
 
