@@ -74,39 +74,54 @@ data.nama;
 
 async function simpan(){
 
-const qty =
-document.getElementById("qty").value;
-const pic =
-document.getElementById("pic").value;
+  const qty =
+  document.getElementById("qty").value;
 
-if(!qty){
-  alert("Masukkan Qty");
-  return;
-}
-if(!pic){
-  alert("Masukkan Nama PIC");
-  return;
-}
+  const pic =
+  document.getElementById("pic").value;
 
-const res = await fetch(URL_APPS_SCRIPT,{
-method:"POST",
-body:JSON.stringify({
-action:"save",
-barcode:barcode,
-nama:nama,
-qty:qty,
-pic:pic,
-tipe:tipe
-})
-});
+  const departemen =
+  document.getElementById("departemen").value;
 
-const data = await res.json();
+  const keterangan =
+  document.getElementById("keterangan").value;
 
-alert(
-"Berhasil disimpan\nStok sekarang: "
-+ data.stok
-);
+  if(!qty){
+    alert("Masukkan Qty");
+    return;
+  }
 
-location.reload();
+  if(!pic){
+    alert("Masukkan Nama PIC");
+    return;
+  }
+
+  if(!departemen){
+    alert("Masukkan Departemen");
+    return;
+  }
+
+  const res = await fetch(URL_APPS_SCRIPT,{
+    method:"POST",
+    body:JSON.stringify({
+      action:"save",
+      barcode:barcode,
+      nama:nama,
+      qty:qty,
+      pic:pic,
+      departemen:departemen,
+      keterangan:keterangan,
+      tipe:tipe
+    })
+  });
+
+  const data = await res.json();
+
+  alert(
+    "Berhasil disimpan\nStok sekarang: "
+    + data.stok
+  );
+
+  location.reload();
 
 }
