@@ -1,5 +1,5 @@
 const URL_APPS_SCRIPT =
-"https://script.google.com/macros/s/AKfycbwolklEec6nfSsyNmVkSIsj4UeGSlaM84NQ5gmZrTbCOSTtcI1JNwMtBZxMbkP2SdG-ng/exec";
+"https://script.google.com/macros/s/AKfycbx3kasZw7-VbVuoBwaf7eQNx0pgKZfO2UXqm2cCat0XStMLx2H3BohTmKCGZsVmzFr3jg/exec";
 
 let tipe = "";
 let barcode = "";
@@ -108,10 +108,10 @@ async function simpan(){
       barcode:barcode,
       nama:nama,
       qty:qty,
+      tipe:tipe,
       pic:pic,
       departemen:departemen,
-      keterangan:keterangan,
-      tipe:tipe
+      keterangan:keterangan
     })
   });
 
