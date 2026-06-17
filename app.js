@@ -2,8 +2,9 @@ const URL_APPS_SCRIPT =
 "https://script.google.com/macros/s/AKfycbx3kasZw7-VbVuoBwaf7eQNx0pgKZfO2UXqm2cCat0XStMLx2H3BohTmKCGZsVmzFr3jg/exec";
 
 let tipe = "";
-let barcode = "";
+let kode = "";
 let nama = "";
+let kategori = "";
 
 function pilih(t){
 
@@ -29,7 +30,7 @@ qrbox:250
 },
 async(code)=>{
 
-barcode = code;
+kode = code;
 
 await html5QrCode.stop();
 
@@ -46,7 +47,7 @@ const res = await fetch(URL_APPS_SCRIPT,{
 method:"POST",
 body:JSON.stringify({
 action:"getItem",
-barcode:barcode
+kode:kode
 })
 });
 
@@ -63,6 +64,7 @@ return;
 }
 
 nama = data.nama;
+kategori = data.kategori;
 
 document.getElementById("scanner").style.display="none";
 document.getElementById("form").style.display="block";
@@ -105,8 +107,9 @@ async function simpan(){
     method:"POST",
     body:JSON.stringify({
       action:"save",
-      barcode:barcode,
+      kode:kode,
       nama:nama,
+      kategori:kategori,
       qty:qty,
       tipe:tipe,
       pic:pic,
