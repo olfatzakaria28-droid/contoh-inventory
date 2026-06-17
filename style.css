@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -10,11 +12,13 @@ body{
 min-height:100vh;
 
 background:
+radial-gradient(circle at top left,#00e5ff22,transparent 30%),
+radial-gradient(circle at bottom right,#00ff9522,transparent 30%),
 linear-gradient(
 135deg,
-#0f172a 0%,
-#111827 50%,
-#1e293b 100%
+#0f172a,
+#111827,
+#1e293b
 );
 
 display:flex;
@@ -30,22 +34,22 @@ color:white;
 .card{
 
 width:100%;
-max-width:500px;
-
-background:
-rgba(255,255,255,0.05);
-
-backdrop-filter:blur(20px);
-
-border:
-1px solid rgba(255,255,255,0.1);
-
-border-radius:24px;
+max-width:550px;
 
 padding:25px;
 
+border-radius:25px;
+
+background:
+rgba(255,255,255,.06);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
 box-shadow:
-0 0 25px rgba(0,255,255,0.15);
+0 0 40px rgba(0,229,255,.12);
 
 }
 
@@ -53,16 +57,16 @@ h2{
 
 text-align:center;
 
+font-size:30px;
+
 margin-bottom:25px;
-
-font-size:28px;
-
-font-weight:700;
 
 color:#00e5ff;
 
+letter-spacing:1px;
+
 text-shadow:
-0 0 15px rgba(0,229,255,.5);
+0 0 15px rgba(0,229,255,.4);
 
 }
 
@@ -76,11 +80,11 @@ margin-top:12px;
 
 border:none;
 
-border-radius:14px;
+border-radius:15px;
 
 font-size:16px;
 
-font-weight:bold;
+font-weight:600;
 
 cursor:pointer;
 
@@ -92,9 +96,12 @@ button:hover{
 
 transform:translateY(-2px);
 
+box-shadow:
+0 10px 20px rgba(0,0,0,.25);
+
 }
 
-button:nth-child(1){
+#menu button:first-child{
 
 background:
 linear-gradient(
@@ -107,7 +114,7 @@ color:white;
 
 }
 
-button:nth-child(2){
+#menu button:last-child{
 
 background:
 linear-gradient(
@@ -129,6 +136,8 @@ linear-gradient(
 #00e5ff
 );
 
+color:white;
+
 }
 
 input{
@@ -137,7 +146,7 @@ width:100%;
 
 padding:14px;
 
-margin-top:10px;
+margin-top:12px;
 
 border-radius:12px;
 
@@ -163,18 +172,17 @@ color:#bdbdbd;
 
 #reader{
 
-width:100%;
+margin-top:15px;
 
 overflow:hidden;
 
-border-radius:16px;
+border-radius:18px;
 
-margin-top:15px;
-
-border:2px solid #00e5ff;
+border:
+2px solid #00e5ff;
 
 box-shadow:
-0 0 20px rgba(0,229,255,.3);
+0 0 25px rgba(0,229,255,.25);
 
 }
 
@@ -184,12 +192,11 @@ margin-top:15px;
 
 font-size:24px;
 
-font-weight:bold;
+font-weight:700;
 
 color:#00e5ff;
 
-text-shadow:
-0 0 10px rgba(0,229,255,.5);
+text-align:center;
 
 }
 
@@ -199,9 +206,9 @@ text-shadow:
 #stok,
 #satuan{
 
-margin-top:8px;
+margin-top:10px;
 
-padding:12px;
+padding:12px 15px;
 
 border-radius:12px;
 
@@ -211,15 +218,41 @@ rgba(255,255,255,.05);
 border:
 1px solid rgba(255,255,255,.08);
 
-text-align:left;
+font-size:14px;
 
 }
 
 #stok{
 
+font-weight:bold;
+
 color:#00ff95;
 
-font-weight:bold;
+background:
+rgba(0,255,149,.08);
+
+border:
+1px solid rgba(0,255,149,.2);
+
+}
+
+#form{
+
+animation:fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(15px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 
 }
 
